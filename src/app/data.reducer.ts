@@ -1,13 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { loadData, loadDataSuccess } from './data.actions';
 
-export interface State {
-  data: any;
-  loading: boolean;
-  error: any;
-}
+// export interface State {
+//   data: any;
+//   loading: boolean;
+//   error: any;
+// }
 
-export const initialState: State = {
+export const initialState: any = {
   data: null,
   loading: false,
   error: null
