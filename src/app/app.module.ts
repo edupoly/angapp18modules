@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { provideHttpClient } from '@angular/common/http';
+import { dataReducer } from './app.reducer';
+import { DataEffect } from './app.effects';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,10 @@ import { EffectsModule } from '@ngrx/effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([])
+    StoreModule.forRoot({data:dataReducer}, {}),
+    EffectsModule.forRoot([DataEffect])
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
