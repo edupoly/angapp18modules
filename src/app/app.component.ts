@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { loadData } from './app.actions';
+import { loadData,loadP } from './app.actions';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,13 @@ import { loadData } from './app.actions';
 })
 export class AppComponent {
   title = 'angapp18modules';
-  data$:Observable<any>=this.store.select(state=>state);
+  posts$:Observable<any>=this.store.select(state=>state);
   ngOnInit(){
-    this.store.dispatch(loadData())
+    console.log("HIH")
+    // this.store.dispatch(loadP())
+    // this.store.dispatch(loadData())
   }
-  constructor(private store:Store){}
+  constructor(private store:Store){
+    
+  }
 }

@@ -1,8 +1,9 @@
 import { createReducer,on } from "@ngrx/store";
-import { loadData,loadDataSuccess } from "./app.actions";
+import { loadData,loadDataSuccess, loadP, loadPostsSuccess } from "./app.actions";
 const initialState = {
     loading:false,
-    data:null,
+    countries:null,
+    posts:null,
     error:null
 }
 export const dataReducer = createReducer(
@@ -17,8 +18,24 @@ export const dataReducer = createReducer(
         return {
             ...state,
             loading:false,
-            data:action.payload,
+            counties:action.payload,
             error:null,
+        }
+    }),
+    on(loadP,state=>{
+        console.log("Load Posts")
+        return {
+                ...state,
+                loading:true
+        }
+        
+    }),
+    on(loadPostsSuccess,(state,action)=>{
+        return {
+            ...state,
+            loading:false,
+            posts:action.payload,
+            error:null
         }
     })
 )
